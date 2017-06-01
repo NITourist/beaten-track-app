@@ -21,7 +21,6 @@ export class MainTabsPage {
   public tabHome = HomePage;
   public tabSearch = SearchPage;
   public tabActivity = ActivityPage;
-  public tabMe = MyProfilePage;
 
   constructor(public nav: NavController) {
   }

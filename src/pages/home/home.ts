@@ -9,7 +9,7 @@ import {HotelDetailPage} from "../hotel-detail/hotel-detail";
 import {RestaurantsPage} from "../restaurants/restaurants";
 import {HotelsPage} from "../hotels/hotels";
 import {AttractionsPage} from "../attractions/attractions";
-
+import {MovieService} from '../../services/movie-service';
 /*
  Generated class for the LoginPage page.
 
@@ -18,23 +18,44 @@ import {AttractionsPage} from "../attractions/attractions";
  */
 @Component({
   selector: 'page-home',
-  templateUrl: 'home.html'
+  templateUrl: 'home.html',
+  providers: [MovieService]
 })
 export class HomePage {
   // restaurants
   public restaurants: any;
   // hotels
-  public hotels: any;
+  public hotels: Array<any>;
   // attractions
   public attractions: any;
 
+  movies: Array<any>;
+
   constructor(public app: App, public nav: NavController, public gatewayService: GatewayService,
               public hotelService: HotelService, public restaurantService: RestaurantService,
-              public attractionService: AttractionService) {
+              public attractionService: AttractionService, private movieService: MovieService) {
     // set sample data
     this.restaurants = restaurantService.getAll();
-    this.hotels = hotelService.getAll();
+    hotelService.getAll().then(data => {
+      this.hotels = data;
+    });
     this.attractions = attractionService.getAll();
+
+    // this.movies = searchMovieDB();
+  }
+
+  searchMovieDB() {
+      this.movieService.searchMovies('batman').subscribe(
+        data => {
+          this.movies = data.results;
+          console.log(data);
+        },
+        err => {
+          console.log(err);
+        },
+        () => console.log('Movie Search Complete')
+      );
+
   }
 
   // make array with range is n

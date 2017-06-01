@@ -7,11 +7,9 @@ import {StatusBar} from 'ionic-native';
 import {WelcomePage} from '../pages/welcome/welcome';
 import {LoginPage} from '../pages/login/login';
 import {MainTabsPage} from '../pages/main-tabs/main-tabs';
-import {SettingPage} from '../pages/setting/setting';
-import {FindFriendPage} from '../pages/find-friend/find-friend';
-import {HotelsPage} from '../pages/hotels/hotels';
-import {RestaurantsPage} from '../pages/restaurants/restaurants';
-import {AttractionsPage} from '../pages/attractions/attractions';
+import {SearchPage} from '../pages/search/search';
+import {ActivityPage} from '../pages/activity/activity';
+
 // end import pages
 
 @Component({
@@ -28,47 +26,22 @@ export class MyApp {
 
   public pages = [
     {
-      title: 'Home',
+      title: 'Near By',
       count: 0,
       component: MainTabsPage
     },
 
     {
-      title: 'Invite Friend',
+      title: 'Search',
       count: 0,
-      component: FindFriendPage
+      component: SearchPage
     },
 
     {
-      title: 'Hotels',
+      title: 'Tours',
       count: 0,
-      component: HotelsPage
-    },
-
-    {
-      title: 'Restaurants',
-      count: 0,
-      component: RestaurantsPage
-    },
-
-    {
-      title: 'Attractions',
-      count: 0,
-      component: AttractionsPage
-    },
-
-    {
-      title: 'Settings',
-      count: 0,
-      component: SettingPage
-    },
-
-    {
-      title: 'Logout',
-      count: 0,
-      component: LoginPage
-    },
-
+      component: ActivityPage
+    }
 
     // import menu
 
